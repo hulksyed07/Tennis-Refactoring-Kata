@@ -15,11 +15,15 @@ class TennisGame
   end
 
   def player1Score
-    @player1Points +=1
+    playerScore(@player1Points)
   end
   
   def player2Score
-    @player2Points +=1
+    playerScore(@player2Points)
+  end
+
+  def playerScore(playerPoints)
+    playerPoints += 1
   end
 end
 
