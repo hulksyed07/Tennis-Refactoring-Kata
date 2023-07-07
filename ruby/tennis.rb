@@ -1,21 +1,29 @@
-
-class TennisGame1
-
+class TennisGame
   def initialize(player1Name, player2Name)
     @player1Name = player1Name
     @player2Name = player2Name
     @player1Points = 0
     @player2Points = 0
   end
-        
+
   def won_point(playerName)
-    if playerName == "player1"
-      @player1Points += 1
+    if playerName == @player1Name
+      p1Score()
     else
-      @player2Points += 1
+      p2Score()
     end
   end
+
+  def p1Score
+    @player1Points +=1
+  end
   
+  def p2Score
+    @player2Points +=1
+  end
+end
+
+class TennisGame1 < TennisGame
   def score
     result = ""
     tempScore=0
@@ -56,22 +64,7 @@ class TennisGame1
   end
 end
 
-class TennisGame2
-  def initialize(player1Name, player2Name)
-    @player1Name = player1Name
-    @player2Name = player2Name
-    @player1Points = 0
-    @player2Points = 0
-  end
-      
-  def won_point(playerName)
-    if playerName == @player1Name
-      p1Score()
-    else
-      p2Score()
-    end
-  end
-
+class TennisGame2 < TennisGame
   def score
     result = ""
     if (@player1Points == @player2Points and @player1Points < 3)
@@ -176,43 +169,20 @@ class TennisGame2
       p2Score()
     end
   end
-
-  def p1Score
-    @player1Points +=1
-  end
-  
-  def p2Score
-    @player2Points +=1
-  end
 end
 
-class TennisGame3
-  def initialize(player1Name, player2Name)
-    @p1N = player1Name
-    @p2N = player2Name
-    @p1 = 0
-    @p2 = 0
-  end
-      
-  def won_point(n)
-    if n == @p1N
-        @p1 += 1
-    else
-        @p2 += 1
-    end
-  end
-  
+class TennisGame3 < TennisGame
   def score
-    if (@p1 < 4 and @p2 < 4) and (@p1 + @p2 < 6)
+    if (@player1Points < 4 and @player2Points < 4) and (@player1Points + @player2Points < 6)
       p = ["Love", "Fifteen", "Thirty", "Forty"]
-      s = p[@p1]
-      @p1 == @p2 ? s + "-All" : s + "-" + p[@p2]
+      s = p[@player1Points]
+      @player1Points == @player2Points ? s + "-All" : s + "-" + p[@player2Points]
     else
-      if (@p1 == @p2)
+      if (@player1Points == @player2Points)
         "Deuce"
       else
-        s = @p1 > @p2 ? @p1N : @p2N
-        (@p1-@p2)*(@p1-@p2) == 1 ? "Advantage " + s : "Win for " + s
+        s = @player1Points > @player2Points ? @player1Name : @player2Name
+        (@player1Points-@player2Points)*(@player1Points-@player2Points) == 1 ? "Advantage " + s : "Win for " + s
       end
     end
   end
