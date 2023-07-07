@@ -8,17 +8,17 @@ class TennisGame
 
   def won_point(playerName)
     if playerName == @player1Name
-      p1Score()
+      player1Score()
     else
-      p2Score()
+      player2Score()
     end
   end
 
-  def p1Score
+  def player1Score
     @player1Points +=1
   end
   
-  def p2Score
+  def player2Score
     @player2Points +=1
   end
 end
@@ -158,15 +158,15 @@ class TennisGame2 < TennisGame
     result
   end
 
-  def setp1Score(number)
+  def setplayer1Score(number)
     (0..number).each do |i|
-        p1Score()
+        player1Score()
     end
   end
 
-  def setp2Score(number)
+  def setplayer2Score(number)
     (0..number).each do |i|
-      p2Score()
+      player2Score()
     end
   end
 end
